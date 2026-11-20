@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ff6600">
+
+    <meta name="description"
+          content="KTM 390 Adventure - Advanced Interactive Promotional Website">
+
+    <title>KTM 390 Adventure | Born For Adventure</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =====================================
+         LOADING SCREEN
+    ====================================== -->
+
+    <div class="loader" :class="{ loaded: loaded }">
+
+        <div class="loader-logo">
+            KTM
+        </div>
+
+        <div class="loader-line">
+            <span :style="{ width: loadingProgress + '%' }"></span>
+        </div>
+
+        <p>
+            PREPARING YOUR ADVENTURE
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <header class="navbar"
+            :class="{ scrolled: scrollY > 50 }">
+
+        <div class="nav-container">
+
+            <a href="#home"
+               class="ktm-logo">
+
+                KTM
+            </a>
+
+            <nav :class="{ active: mobileMenu }">
+
+                <a href="#performance"
+                   @click="mobileMenu = false">
+                    PERFORMANCE
+                </a>
+
+                <a href="#technology"
+                   @click="mobileMenu = false">
+                    TECHNOLOGY
+                </a>
+
+                <a href="#adventure"
+                   @click="mobileMenu = false">
+                    ADVENTURE
+                </a>
+
+                <a href="#specifications"
+                   @click="mobileMenu = false">
+                    SPECS
+                </a>
+
+            </nav>
+
+            <button class="nav-test"
+                    @click="openTestRide">
+
+                TEST RIDE
+            </button>
+
+            <button class="menu-button"
+                    @click="mobileMenu = !mobileMenu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <div class="product-bar">
+
+        <div class="product-bar-inner">
+
+            <strong>KTM 390 ADVENTURE</strong>
+
+            <nav aria-label="Product navigation">
+
+                <a href="#home">OVERVIEW</a>
+                <a href="#performance">PERFORMANCE</a>
+                <a href="#technology">FEATURES</a>
+                <a href="#specifications">SPECIFICATIONS</a>
+
+            </nav>
+
+            <button @click="openTestRide">
+                BOOK TEST RIDE <span>↗</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <main>
+
+        <section id="home"
+                 class="hero">
+
+            <!-- Animated Background -->
+
+            <div class="hero-grid"></div>
+
+            <div class="particles">
+
+                <span v-for="n in 35"
+                      :key="n"
+                      class="particle"
+                      :style="particleStyle(n)">
+                </span>
+
+            </div>
+
+
+            <!-- Huge Typography -->
+
+            <div class="hero-background-text">
+
+                ADVENTURE
+
+            </div>
+
+
+            <!-- Hero Content -->
+
+            <div class="hero-content">
+
+                <div class="hero-small">
+
+                    KTM PRESENTS
+
+                </div>
+
+                <h1>
+
+                    390
+                    <span>ADVENTURE</span>
+
+                </h1>
+
+                <p class="hero-description">
+
+                    BUILT TO ESCAPE.
+                    ENGINEERED TO EXPLORE.
+                    DESIGNED TO CONQUER.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-button"
+                            @click="scrollToSection('performance')">
+
+                        EXPLORE THE MACHINE
+
+                        <span>↗</span>
+
+                    </button>
+
+                    <button class="outline-button"
+                            @click="openTestRide">
+
+                        BOOK TEST RIDE
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Motorcycle 3D Stage -->
+
+            <div class="bike-stage"
+                 @pointermove="handleMouseMove"
+                 @mouseleave="resetTilt">
+
+                <div class="bike-glow"></div>
+
+                <div class="bike-platform">
+
+                    <div class="platform-ring"></div>
+
+                    <div class="bike-model" :style="bikeTransform">
+
+                        <img
+                            class="hero-bike hero-bike-depth depth-one"
+                            :src="bikeImage"
+                            aria-hidden="true"
+                            alt="">
+
+                        <img
+                            class="hero-bike hero-bike-depth depth-two"
+                            :src="bikeImage"
+                            aria-hidden="true"
+                            alt="">
+
+                        <img
+                            class="hero-bike"
+                            :src="bikeImage"
+                            alt="KTM 390 Adventure 3D view">
+
+                    </div>
+
+                    <div class="model-badge">
+                        <span class="model-badge-dot"></span>
+                        3D MODEL · KTM 390
+                    </div>
+
+                </div>
+
+                <!-- Floating Specs -->
+
+                <div class="floating-spec spec-power">
+
+                    <strong>
+                        41.5
+                    </strong>
+
+                    <span>
+                        PS POWER
+                    </span>
+
+                </div>
+
+                <div class="floating-spec spec-torque">
+
+                    <strong>
+                        33.5
+                    </strong>
+
+                    <span>
+                        Nm TORQUE
+                    </span>
+
+                </div>
+
+                <div class="floating-spec spec-cc">
+
+                    <strong>
+                        349
+                    </strong>
+
+                    <span>
+                        CC
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Scroll -->
+
+            <div class="scroll-indicator">
+
+                <span>
+                    SCROLL
+                </span>
+
+                <div class="scroll-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <section class="video-showcase">
+
+            <div class="video-header">
+
+                <div class="video-label">
+                    EXPERIENCE THE RIDE
+                </div>
+
+                <h2>
+                    FEEL THE
+                    <span>ADVENTURE</span>
+                </h2>
+
+            </div>
+
+            <div class="video-frame">
+
+                <video class="home-video"
+                       autoplay
+                       muted
+                       loop
+                       playsinline
+                       controls>
+                    <source src="assets/home-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PERFORMANCE
+        ====================================== -->
+
+        <section id="performance"
+                 class="section performance-section">
+
+            <div class="section-number">
+                01
+            </div>
+
+            <div class="section-header">
+
+                <span>
+                    UNLIMITED PERFORMANCE
+                </span>
+
+                <h2>
+                    MORE POWER.
+                    <br>
+                    MORE ADVENTURE.
+                </h2>
+
+                <p>
+
+                    The KTM 390 Adventure is engineered around a
+                    lightweight single-cylinder platform designed
+                    for responsive acceleration, touring and
+                    off-road exploration.
+
+                </p>
+
+            </div>
+
+
+            <div class="performance-grid">
+
+                <div class="performance-card">
+
+                    <div class="card-icon">
+                        ⚡
+                    </div>
+
+                    <span>
+                        POWER
+                    </span>
+
+                    <strong>
+                        {{ animatedPower }}
+                    </strong>
+
+                    <small>
+                        PS @ 8600 RPM
+                    </small>
+
+                </div>
+
+
+                <div class="performance-card featured">
+
+                    <div class="card-icon">
+                        ◈
+                    </div>
+
+                    <span>
+                        TORQUE
+                    </span>
+
+                    <strong>
+                        {{ animatedTorque }}
+                    </strong>
+
+                    <small>
+                        Nm @ 7000 RPM
+                    </small>
+
+                </div>
+
+
+                <div class="performance-card">
+
+                    <div class="card-icon">
+                        ◉
+                    </div>
+
+                    <span>
+                        ENGINE
+                    </span>
+
+                    <strong>
+                        349
+                    </strong>
+
+                    <small>
+                        CC LC4C
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Engine Animation -->
+
+            <div class="engine-animation">
+
+                <div class="engine-core">
+
+                    <div class="engine-cylinder"></div>
+
+                    <div class="engine-ring"></div>
+
+                    <div class="engine-ring ring-2"></div>
+
+                    <div class="engine-ring ring-3"></div>
+
+                    <div class="engine-center">
+                        KTM
+                    </div>
+
+                </div>
+
+                <div class="engine-label">
+                    LC4C SINGLE CYLINDER
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TECHNOLOGY
+        ====================================== -->
+
+        <section id="technology"
+                 class="section technology-section">
+
+            <div class="section-number">
+                02
+            </div>
+
+            <div class="section-header light">
+
+                <span>
+                    ADVANCED ELECTRONIC AIDS
+                </span>
+
+                <h2>
+                    TECHNOLOGY
+                    <br>
+                    THAT MOVES.
+                </h2>
+
+            </div>
+
+
+            <div class="technology-layout">
+
+                <div class="tech-menu">
+
+                    <button
+                        v-for="(tech, index) in technologies"
+                        :key="index"
+                        :class="{ active: selectedTech === index }"
+                        @click="selectedTech = index">
+
+                        <span>
+                            0{{ index + 1 }}
+                        </span>
+
+                        {{ tech.title }}
+
+                    </button>
+
+                </div>
+
+
+                <div class="tech-display">
+
+                    <div class="tech-circle">
+
+                        <div class="circle-inner">
+
+                            <span>
+                                {{ technologies[selectedTech].icon }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tech-info">
+
+                        <span>
+                            0{{ selectedTech + 1 }}
+                        </span>
+
+                        <h3>
+                            {{ technologies[selectedTech].title }}
+                        </h3>
+
+                        <p>
+                            {{ technologies[selectedTech].description }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RIDE MODE
+        ====================================== -->
+
+        <section class="ride-mode-section">
+
+            <div class="ride-background">
+
+                <div class="mountain mountain-one"></div>
+                <div class="mountain mountain-two"></div>
+                <div class="mountain mountain-three"></div>
+
+            </div>
+
+
+            <div class="ride-content">
+
+                <span>
+                    CHOOSE YOUR TERRAIN
+                </span>
+
+                <h2>
+                    ONE MACHINE.
+                    <br>
+                    MANY WORLDS.
+                </h2>
+
+
+                <div class="ride-buttons">
+
+                    <button
+                        v-for="mode in rideModes"
+                        :key="mode.name"
+                        :class="{ active: selectedMode === mode.name }"
+                        @click="selectedMode = mode.name">
+
+                        {{ mode.name }}
+
+                    </button>
+
+                </div>
+
+
+                <div class="mode-display">
+
+                    <div class="mode-number">
+                        {{ selectedModeData.number }}
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            {{ selectedModeData.name }}
+                        </h3>
+
+                        <p>
+                            {{ selectedModeData.description }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             3D BIKE EXPERIENCE
+        ====================================== -->
+
+        <section class="interactive-section">
+
+            <div class="interactive-title">
+
+                <span>
+                    INTERACTIVE EXPERIENCE
+                </span>
+
+                <h2>
+                    ROTATE THE
+                    <strong>MACHINE.</strong>
+                </h2>
+
+                <p>
+                    Move your mouse across the motorcycle
+                    to create a cinematic 3D perspective.
+                </p>
+
+                <button
+                    class="reveal-button"
+                    :class="{ playing: animationPlaying }"
+                    @click="toggleAnimation"
+                    type="button">
+
+                    <span class="reveal-button-icon">▶</span>
+                    {{ animationPlaying ? "PAUSE REVEAL" : "PLAY 3D REVEAL" }}
+
+                </button>
+
+                <button
+                    class="reveal-button export-button"
+                    @click="exportRevealVideo"
+                    :disabled="exportingVideo"
+                    type="button">
+
+                    <span class="reveal-button-icon">↓</span>
+                    {{ exportingVideo ? "RENDERING VIDEO..." : "EXPORT WEBM VIDEO" }}
+
+                </button>
+
+                <span v-if="videoExportMessage"
+                      class="video-export-message">
+                    {{ videoExportMessage }}
+                </span>
+
+            </div>
+
+
+            <div class="interactive-bike">
+
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+
+                 <div class="interactive-bike-camera"
+                     :class="{ playing: animationPlaying }">
+
+                <img
+                    :src="bikeImage"
+                    class="interactive-bike-image"
+                    :style="bikeTransform"
+                    alt="KTM Adventure motorcycle">
+
+                 </div>
+
+                 <div class="reveal-progress"
+                     :class="{ playing: animationPlaying }">
+                 </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ADVENTURE
+        ====================================== -->
+
+        <section id="adventure"
+                 class="adventure-section">
+
+            <div class="adventure-overlay"></div>
+
+            <div class="adventure-content">
+
+                <span>
+                    BUILT FOR ADVENTURE
+                </span>
+
+                <h2>
+                    GO WHERE
+                    <br>
+                    ROADS END.
+                </h2>
+
+                <p>
+
+                    Long-distance touring.
+                    Rough trails.
+                    Mountain roads.
+                    City streets.
+
+                    The KTM 390 Adventure is designed
+                    to bring confidence across changing terrain.
+
+                </p>
+
+                <button
+                    class="primary-button"
+                    @click="scrollToSection('specifications')">
+
+                    VIEW SPECIFICATIONS
+
+                    <span>
+                        ↓
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             SPECIFICATIONS
+        ====================================== -->
+
+        <section id="specifications"
+                 class="section specifications-section">
+
+            <div class="section-number">
+                03
+            </div>
+
+            <div class="section-header">
+
+                <span>
+                    THE MACHINE
+                </span>
+
+                <h2>
+                    KTM 390
+                    <br>
+                    ADVENTURE.
+                </h2>
+
+            </div>
+
+
+            <div class="spec-table">
+
+                <div class="spec-row">
+
+                    <span>
+                        ENGINE
+                    </span>
+
+                    <strong>
+                        349.32 cc
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        ENGINE TYPE
+                    </span>
+
+                    <strong>
+                        4-Stroke Single Cylinder DOHC
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        MAX POWER
+                    </span>
+
+                    <strong>
+                        41.5 PS @ 8600 RPM
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        MAX TORQUE
+                    </span>
+
+                    <strong>
+                        33.5 Nm @ 7000 RPM
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        FRONT TRAVEL
+                    </span>
+
+                    <strong>
+                        200 mm
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        REAR TRAVEL
+                    </span>
+
+                    <strong>
+                        205 mm
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        GROUND CLEARANCE
+                    </span>
+
+                    <strong>
+                        228 mm
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        FUEL TANK
+                    </span>
+
+                    <strong>
+                        14.5 L
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        TFT DISPLAY
+                    </span>
+
+                    <strong>
+                        5"
+                    </strong>
+
+                </div>
+
+
+                <div class="spec-row">
+
+                    <span>
+                        FRONT / REAR TYRE
+                    </span>
+
+                    <strong>
+                        100/90 × 19 / 130/80 × 17
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <p class="source-note">
+                Specifications shown are based on the current KTM India
+                390 Adventure information and can vary by market/model year.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             EMI
+        ====================================== -->
+
+        <section class="emi-section">
+
+            <div class="emi-container">
+
+                <div>
+
+                    <span>
+                        PLAN YOUR ADVENTURE
+                    </span>
+
+                    <h2>
+                        CALCULATE
+                        <br>
+                        YOUR EMI.
+                    </h2>
+
+                    <p>
+                        Adjust the values and see an estimated
+                        monthly payment.
+                    </p>
+
+                </div>
+
+
+                <div class="emi-calculator">
+
+                    <label>
+                        Bike Price
+                    </label>
+
+                    <input
+                        type="number"
+                        v-model.number="bikePrice">
+
+                    <div class="range-value">
+
+                        ₹{{ formatNumber(bikePrice) }}
+
+                    </div>
+
+
+                    <label>
+                        Down Payment
+                    </label>
+
+                    <input
+                        type="range"
+                        min="0"
+                        :max="bikePrice * .7"
+                        step="5000"
+                        v-model.number="downPayment">
+
+                    <div class="range-value">
+
+                        ₹{{ formatNumber(downPayment) }}
+
+                    </div>
+
+
+                    <label>
+                        Interest Rate: {{ interestRate }}%
+                    </label>
+
+                    <input
+                        type="range"
+                        min="5"
+                        max="18"
+                        step=".1"
+                        v-model.number="interestRate">
+
+
+                    <label>
+                        Tenure: {{ tenure }} months
+                    </label>
+
+                    <input
+                        type="range"
+                        min="12"
+                        max="60"
+                        step="12"
+                        v-model.number="tenure">
+
+
+                    <div class="emi-result">
+
+                        <small>
+                            ESTIMATED MONTHLY EMI
+                        </small>
+
+                        <strong>
+                            ₹{{ formatNumber(emi) }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CTA
+        ====================================== -->
+
+        <section class="final-cta">
+
+            <div class="cta-lines"></div>
+
+            <div class="cta-content">
+
+                <span>
+                    THE NEXT ERA IN HARDCORE ADVENTURE
+                </span>
+
+                <h2>
+                    ADVENTURE
+                    <br>
+                    STARTS NOW.
+                </h2>
+
+                <button
+                    class="primary-button large"
+                    @click="openTestRide">
+
+                    BOOK YOUR TEST RIDE
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer>
+
+            <div class="footer-logo">
+                KTM
+            </div>
+
+            <p>
+                390 ADVENTURE
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    HOME
+                </a>
+
+                <a href="#performance">
+                    PERFORMANCE
+                </a>
+
+                <a href="#technology">
+                    TECHNOLOGY
+                </a>
+
+                <a href="#specifications">
+                    SPECS
+                </a>
+
+            </div>
+
+            <small>
+                Promotional concept website. Not an official KTM website.
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================
+         TEST RIDE MODAL
+    ====================================== -->
+
+    <div class="modal"
+         v-if="testRideOpen"
+         @click.self="testRideOpen = false">
+
+        <div class="modal-box">
+
+            <button class="modal-close"
+                    @click="testRideOpen = false">
+
+                ×
+
+            </button>
+
+            <span>
+                KTM 390 ADVENTURE
+            </span>
+
+            <h2>
+                BOOK A
+                <br>
+                TEST RIDE.
+            </h2>
+
+            <form @submit.prevent="submitTestRide">
+
+                <input
+                    type="text"
+                    v-model="form.name"
+                    placeholder="Your name"
+                    required>
+
+                <input
+                    type="tel"
+                    v-model="form.phone"
+                    placeholder="Mobile number"
+                    required>
+
+                <input
+                    type="text"
+                    v-model="form.city"
+                    placeholder="City"
+                    required>
+
+                <p class="form-error" v-if="submissionError">
+                    {{ submissionError }}
+                </p>
+
+                <button
+                    class="primary-button"
+                    type="submit">
+
+                    {{ submitted ? 'REQUEST RECEIVED ✓' : 'REQUEST TEST RIDE →' }}
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Vue.js -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">KTM 390 Adventure motorcycle</title>
+  <desc id="desc">Stylized orange and black adventure motorcycle side profile.</desc>
+  <defs>
+    <linearGradient id="orange" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffb000"/>
+      <stop offset=".45" stop-color="#ff6500"/>
+      <stop offset="1" stop-color="#d72d00"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" x2="1">
+      <stop stop-color="#464b50"/>
+      <stop offset="1" stop-color="#111315"/>
+    </linearGradient>
+    <filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <ellipse cx="450" cy="452" rx="310" ry="24" fill="#ff5a00" opacity=".2" filter="url(#shadow)"/>
+  <g stroke="#08090a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="210" cy="365" r="88" fill="#131517"/>
+    <circle cx="680" cy="365" r="88" fill="#131517"/>
+    <circle cx="210" cy="365" r="57" fill="none" stroke="#596066" stroke-width="8"/>
+    <circle cx="680" cy="365" r="57" fill="none" stroke="#596066" stroke-width="8"/>
+    <circle cx="210" cy="365" r="10" fill="#ff6500" stroke="none"/>
+    <circle cx="680" cy="365" r="10" fill="#ff6500" stroke="none"/>
+    <path d="M210 365 325 230 475 360 680 365" fill="none" stroke="#ff6500" stroke-width="14"/>
+    <path d="M325 230 410 210 475 360 365 360Z" fill="url(#frame)"/>
+    <path d="M280 275 330 170 470 160 535 260 475 340 330 330Z" fill="url(#orange)"/>
+    <path d="M365 173 430 110 505 125 535 260 470 260Z" fill="#111416"/>
+    <path d="M430 110 485 85 540 105 505 125Z" fill="#ff6b00"/>
+    <path d="M535 260 650 210 735 240 680 365 625 360Z" fill="url(#orange)"/>
+    <path d="M650 210 715 175 770 190 735 240Z" fill="#171a1c"/>
+    <path d="M715 175 755 105 790 110 770 190" fill="none" stroke="#c4c9cc" stroke-width="11"/>
+    <path d="M755 105 810 85" fill="none" stroke="#c4c9cc" stroke-width="10"/>
+    <path d="M585 255 640 300" fill="none" stroke="#c4c9cc" stroke-width="10"/>
+    <path d="M505 360 570 380 625 360" fill="none" stroke="#0b0c0d" stroke-width="18"/>
+    <path d="M305 330 260 400" fill="none" stroke="#ff6500" stroke-width="10"/>
+  </g>
+  <g fill="#fff" font-family="Arial, sans-serif" font-weight="700" font-style="italic">
+    <text x="360" y="265" font-size="42">KTM</text>
+    <text x="548" y="310" font-size="26">390</text>
+  </g>
+</svg>
